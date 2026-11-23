@@ -1,0 +1,962 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>IceJoy - Happiness in Every Scoop</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #fff8fb;
+    color: #292333;
+}
+
+/* NAVBAR */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 8%;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+}
+
+.logo {
+    font-size: 27px;
+    font-weight: 900;
+    color: #ed5790;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #393344;
+    font-weight: 600;
+}
+
+nav a:hover {
+    color: #ed5790;
+}
+
+.nav-btn {
+    background: #ed5790;
+    color: white !important;
+    padding: 12px 22px;
+    border-radius: 30px;
+}
+
+/* HERO */
+.hero {
+    min-height: 570px;
+    padding: 70px 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    background: linear-gradient(120deg, #fff0f6, #fce4f0);
+}
+
+.hero-text {
+    max-width: 550px;
+}
+
+.hero-text h1 {
+    font-size: 55px;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+
+.hero-text h1 span {
+    color: #ed5790;
+}
+
+.hero-text p {
+    font-size: 17px;
+    color: #777;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.hero-btn {
+    display: inline-block;
+    background: #ed5790;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.hero-btn:hover {
+    background: #cf3470;
+    transform: translateY(-3px);
+}
+
+.hero img {
+    width: 43%;
+    max-width: 450px;
+    height: 350px;
+    border-radius: 30px;
+    object-fit: cover;
+    box-shadow: 0 15px 40px rgba(190,70,120,.15);
+}
+
+/* SECTION */
+section {
+    padding: 85px 8%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title h2 {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: #888;
+}
+
+/* PRODUCT */
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.card {
+    background: white;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0,0,0,.07);
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card img {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 25px;
+}
+
+.card-content h3 {
+    font-size: 23px;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    color: #888;
+    font-size: 14px;
+    line-height: 1.7;
+    min-height: 48px;
+}
+
+.price {
+    color: #ed5790;
+    font-size: 22px;
+    font-weight: 800;
+    margin: 18px 0;
+}
+
+.order-btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    background: #ed5790;
+    color: white;
+    padding: 13px;
+    border: none;
+    border-radius: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.order-btn:hover {
+    background: #cf3470;
+}
+
+/* CART */
+.cart-section {
+    background: #fff0f6;
+}
+
+.cart-box {
+    max-width: 750px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.05);
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item h3 {
+    font-size: 17px;
+}
+
+.cart-item p {
+    color: #888;
+    margin: 5px 0;
+}
+
+.cart-item b {
+    color: #ed5790;
+}
+
+.qty button {
+    padding: 7px 13px;
+    border: none;
+    background: #ffe1ed;
+    color: #ed5790;
+    border-radius: 8px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.qty span {
+    padding: 0 10px;
+    font-weight: bold;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 0;
+    font-size: 22px;
+    font-weight: bold;
+    color: #ed5790;
+}
+
+/* FORM */
+.form-title {
+    margin-bottom: 15px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 7px;
+}
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    outline: none;
+    font-size: 14px;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    border-color: #ed5790;
+}
+
+.input-group textarea {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 16px;
+    background: #25d366;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.checkout-btn:hover {
+    background: #1eaf55;
+}
+
+/* ABOUT */
+.about {
+    background: #fff0f6;
+    text-align: center;
+}
+
+.about p {
+    max-width: 700px;
+    margin: auto;
+    color: #777;
+    line-height: 1.9;
+}
+
+/* FOOTER */
+footer {
+    background: #292333;
+    color: white;
+    text-align: center;
+    padding: 35px 15px;
+}
+
+footer span {
+    color: #ff75a8;
+}
+
+/* RESPONSIVE */
+@media(max-width: 850px) {
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 40px;
+    }
+
+    .hero img {
+        width: 100%;
+    }
+
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    nav {
+        padding: 18px 5%;
+    }
+}
+
+@media(max-width: 600px) {
+
+    nav ul {
+        display: none;
+    }
+
+    .products {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-text h1 {
+        font-size: 35px;
+    }
+
+    section {
+        padding: 60px 6%;
+    }
+
+    .section-title h2 {
+        font-size: 29px;
+    }
+
+    .cart-box {
+        padding: 20px;
+    }
+
+    .cart-item {
+        flex-wrap: wrap;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav>
+
+    <div class="logo">IceJoy 🍦</div>
+
+    <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">About</a></li>
+    </ul>
+
+    <a href="#cart" class="nav-btn">
+        🛒 Keranjang
+        (<span id="cartCount">0</span>)
+    </a>
+
+</nav>
+
+
+<!-- HERO -->
+<header class="hero" id="home">
+
+    <div class="hero-text">
+
+        <h1>
+            Happiness In<br>
+            Every <span>Scoop!</span>
+        </h1>
+
+        <p>
+            Nikmati sensasi es krim lembut dengan berbagai
+            pilihan rasa favorit. Dibuat untuk menemani
+            setiap momen bahagiamu!
+        </p>
+
+        <a href="#menu" class="hero-btn">
+            Explore Flavors →
+        </a>
+
+    </div>
+
+    <img
+        src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=900"
+        alt="Ice cream"
+    >
+
+</header>
+
+
+<!-- MENU -->
+<section id="menu">
+
+    <div class="section-title">
+
+        <h2>Our Delicious Menu 🍨</h2>
+
+        <p>
+            Pilih rasa favoritmu dan nikmati kesegarannya!
+        </p>
+
+    </div>
+
+    <div class="products">
+
+
+        <!-- MATCHA -->
+        <div class="card">
+
+            <img
+                src="https://images.unsplash.com/photo-1560008581-09826d1de69e?w=800"
+                alt="Matcha Ice Cream"
+            >
+
+            <div class="card-content">
+
+                <h3>🍵 Vanila Bliss</h3>
+
+                <p>
+                    Es krim Vanila lembut dengan cita rasa
+                    Vanila yang khas dan menyegarkan.
+                </p>
+
+                <div class="price">Rp15.000</div>
+
+                <button
+                    class="order-btn"
+                    onclick="tambahKeranjang('Vanila Bliss')">
+
+                    Tambah ke Keranjang 🛒
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- STRAWBERRY -->
+        <div class="card">
+
+            <img
+                src="https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?w=800"
+                alt="Strawberry Ice Cream"
+            >
+
+            <div class="card-content">
+
+                <h3>🍓 Strawberry Delight</h3>
+
+                <p>
+                    Perpaduan es krim stroberi yang creamy
+                    dengan rasa manis dan sedikit segar.
+                </p>
+
+                <div class="price">Rp15.000</div>
+
+                <button
+                    class="order-btn"
+                    onclick="tambahKeranjang('Strawberry Delight')">
+
+                    Tambah ke Keranjang 🛒
+
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- CHOCOLATE -->
+        <div class="card">
+
+            <img
+                src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=800"
+                alt="Chocolate Ice Cream"
+            >
+
+            <div class="card-content">
+
+                <h3>🍫 Choco Dream</h3>
+
+                <p>
+                    Es krim cokelat dengan rasa cokelat
+                    yang kaya, lembut, dan nikmat.
+                </p>
+
+                <div class="price">Rp15.000</div>
+
+                <button
+                    class="order-btn"
+                    onclick="tambahKeranjang('Choco Dream')">
+
+                    Tambah ke Keranjang 🛒
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- KERANJANG -->
+<section class="cart-section" id="cart">
+
+    <div class="section-title">
+
+        <h2>🛒 Keranjang Belanja</h2>
+
+        <p>
+            Periksa pesanan kamu sebelum checkout!
+        </p>
+
+    </div>
+
+    <div class="cart-box">
+
+        <div id="cartItems">
+
+            <p style="text-align:center;color:#888;">
+                Keranjang masih kosong.
+            </p>
+
+        </div>
+
+        <div class="total">
+
+            <span>Total:</span>
+
+            <span id="totalHarga">Rp0</span>
+
+        </div>
+
+        <hr style="margin-bottom:25px;border:1px solid #eee;">
+
+        <h3 class="form-title">
+            Data Pemesan
+        </h3>
+
+        <div class="input-group">
+
+            <label>Nama Lengkap</label>
+
+            <input
+                type="text"
+                id="nama"
+                placeholder="Masukkan nama lengkap"
+            >
+
+        </div>
+
+        <div class="input-group">
+
+            <label>Nomor HP</label>
+
+            <input
+                type="tel"
+                id="hp"
+                placeholder="Masukkan nomor HP"
+            >
+
+        </div>
+
+        <div class="input-group">
+
+            <label>Alamat Pengiriman</label>
+
+            <textarea
+                id="alamat"
+                placeholder="Masukkan alamat lengkap"
+            ></textarea>
+
+        </div>
+
+        <button
+            class="checkout-btn"
+            onclick="checkout()">
+
+            Checkout via WhatsApp
+            →
+            
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ABOUT -->
+<section class="about" id="about">
+
+    <div class="section-title">
+
+        <h2>About IceJoy</h2>
+
+    </div>
+
+    <p>
+        IceJoy hadir untuk memberikan pengalaman menikmati
+        es krim yang menyenangkan. Dengan tiga pilihan rasa
+        spesial yaitu Matcha, Strawberry, dan Chocolate,
+        kami ingin menghadirkan kebahagiaan dalam setiap scoop.
+    </p>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <h2>IceJoy 🍦</h2>
+
+    <p>Happiness In Every Scoop!</p>
+
+    <br>
+
+    <p>
+        © 2026 IceJoy. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+<!-- JAVASCRIPT -->
+<script>
+
+// GANTI NOMOR WHATSAPP TOKO
+const nomorWhatsApp = "6281234567890";
+
+
+// DATA PRODUK
+const produkIceJoy = {
+
+    "Matcha Bliss": 15000,
+
+    "Strawberry Delight": 15000,
+
+    "Choco Dream": 15000
+
+};
+
+
+// KERANJANG
+let keranjang = {};
+
+
+// TAMBAH PRODUK
+function tambahKeranjang(namaProduk) {
+
+    if (!keranjang[namaProduk]) {
+
+        keranjang[namaProduk] = 0;
+
+    }
+
+    keranjang[namaProduk]++;
+
+    tampilkanKeranjang();
+
+    alert(namaProduk + " berhasil ditambahkan!");
+
+}
+
+
+// UBAH JUMLAH
+function ubahJumlah(namaProduk, jumlah) {
+
+    keranjang[namaProduk] += jumlah;
+
+    if (keranjang[namaProduk] <= 0) {
+
+        delete keranjang[namaProduk];
+
+    }
+
+    tampilkanKeranjang();
+
+}
+
+
+// TAMPILKAN KERANJANG
+function tampilkanKeranjang() {
+
+    const cartItems =
+        document.getElementById("cartItems");
+
+    let total = 0;
+
+    let jumlahProduk = 0;
+
+    let html = "";
+
+
+    for (let produk in keranjang) {
+
+        let jumlah = keranjang[produk];
+
+        let harga = produkIceJoy[produk];
+
+        let subtotal = jumlah * harga;
+
+        total += subtotal;
+
+        jumlahProduk += jumlah;
+
+
+        html += `
+
+        <div class="cart-item">
+
+            <div>
+
+                <h3>${produk}</h3>
+
+                <p>
+                    Rp${harga.toLocaleString("id-ID")}
+                    x ${jumlah}
+                </p>
+
+                <b>
+                    Rp${subtotal.toLocaleString("id-ID")}
+                </b>
+
+            </div>
+
+            <div class="qty">
+
+                <button
+                    onclick="ubahJumlah('${produk}',-1)">
+                    −
+                </button>
+
+                <span>${jumlah}</span>
+
+                <button
+                    onclick="ubahJumlah('${produk}',1)">
+                    +
+                </button>
+
+            </div>
+
+        </div>
+
+        `;
+
+    }
+
+
+    cartItems.innerHTML = html || `
+
+        <p style="text-align:center;color:#888;">
+            Keranjang masih kosong.
+        </p>
+
+    `;
+
+
+    document.getElementById("totalHarga").innerText =
+
+        "Rp" + total.toLocaleString("id-ID");
+
+
+    document.getElementById("cartCount").innerText =
+
+        jumlahProduk;
+
+}
+
+
+// CHECKOUT
+function checkout() {
+
+    let nama = document
+        .getElementById("nama")
+        .value.trim();
+
+    let hp = document
+        .getElementById("hp")
+        .value.trim();
+
+    let alamat = document
+        .getElementById("alamat")
+        .value.trim();
+
+
+    // VALIDASI
+    if (!nama || !hp || !alamat) {
+
+        alert("Mohon lengkapi semua data pemesanan!");
+
+        return;
+
+    }
+
+
+    if (!/^[0-9+\s()-]{8,16}$/.test(hp)) {
+
+        alert("Nomor HP tidak valid!");
+
+        return;
+
+    }
+
+
+    if (Object.keys(keranjang).length === 0) {
+
+        alert("Keranjang masih kosong!");
+
+        return;
+
+    }
+
+
+    let total = 0;
+
+
+    let pesan =
+
+        "🍦 *PESANAN ICEJOY* 🍦\n\n";
+
+
+    pesan += "Nama: " + nama + "\n";
+
+    pesan += "No HP: " + hp + "\n";
+
+    pesan += "Alamat: " + alamat + "\n\n";
+
+    pesan += "*DETAIL PESANAN:*\n";
+
+
+    for (let produk in keranjang) {
+
+        let jumlah = keranjang[produk];
+
+        let harga = produkIceJoy[produk];
+
+        let subtotal = jumlah * harga;
+
+        total += subtotal;
+
+
+        pesan +=
+
+            "• " + produk + "\n" +
+
+            "Jumlah: " + jumlah + "\n" +
+
+            "Harga: Rp" +
+
+            subtotal.toLocaleString("id-ID") +
+
+            "\n\n";
+
+    }
+
+
+    pesan +=
+
+        "*TOTAL PEMBAYARAN: Rp" +
+
+        total.toLocaleString("id-ID") +
+
+        "*";
+
+
+    pesan +=
+
+        "\n\nTerima kasih telah memesan di IceJoy!";
+
+
+    let url =
+
+        "https://wa.me/" +
+
+        nomorWhatsApp +
+
+        "?text=" +
+
+        encodeURIComponent(pesan);
+
+
+    window.open(url, "_blank");
+
+}
+
+
+// TAMPILKAN KERANJANG AWAL
+tampilkanKeranjang();
+
+</script>
+
+</body>
+</html>
+```
